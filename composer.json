@@ -1,0 +1,22 @@
+{
+    "name": "igdj/lod-service",
+    "description": "Fetching resources from Linked Open Data Services",
+    "type": "library",
+    "keywords": ["Linked Data"],
+    "license": "BSD-3-Clause",
+    "autoload": {
+        "psr-4": {
+            "LodService\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^7.2",
+
+        "easyrdf/easyrdf": "^1.1",
+        "ml/json-ld": "1.1.*",
+
+        "league/iso3166": "^2.1",
+
+        "wikimedia/utfnormal": "^3.0"
+    }
+}
