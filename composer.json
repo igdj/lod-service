@@ -10,12 +10,12 @@
         }
     },
     "require": {
-        "php": "^7.2",
+        "php": "^7.3|^8.0",
 
         "easyrdf/easyrdf": "^1.1",
         "ml/json-ld": "1.1.*",
 
-        "league/iso3166": "^2.1",
+        "league/iso3166": "^3.0",
 
         "wikimedia/utfnormal": "^3.0"
     }
