@@ -63,6 +63,7 @@ extends AbstractProvider
             case 'https://d-nb.info/standards/elementset/gnd#CorporateBody':
             case 'https://d-nb.info/standards/elementset/gnd#Company':
             case 'https://d-nb.info/standards/elementset/gnd#MusicalCorporateBody':
+            case 'https://d-nb.info/standards/elementset/gnd#ReligiousCorporateBody':
             case 'https://d-nb.info/standards/elementset/gnd#OrganOfCorporateBody':
                 return $this->instantiateOrganizationFromRdfResource($resource, $fetchRelated);
                 break;
