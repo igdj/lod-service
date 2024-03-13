@@ -10,7 +10,7 @@ accessed in the Digital Source Edition Key Documents of German-Jewish History
 
 You may use it in parts or adjust it to your own need if it fits your needs.
 If you have any questions or find this code helpful, please contact us at
-    http://jewish-history-online.net/contact
+    https://keydocuments.net/contact
 
 Status
 ------
@@ -22,13 +22,13 @@ This library is still very much work in progress.
 Requirements
 ------------
 
-* PHP 7.2 or higher
+* PHP 7.3 or higher
 
 License
 -------
 The library are licensed under the [BSD-3-Clause] license.
 
-(C) 2017-2021 Institut für die Geschichte der deutschen Juden,
+(C) 2017-2024 Institut für die Geschichte der deutschen Juden,
     Daniel Burckhardt
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
