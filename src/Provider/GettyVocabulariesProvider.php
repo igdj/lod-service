@@ -5,6 +5,9 @@ namespace LodService\Provider;
 use LodService\Identifier\Identifier;
 use LodService\Identifier\TgnIdentifier;
 
+/**
+ * Provider for Getty Vocabulary Services
+ */
 class GettyVocabulariesProvider
 extends AbstractProvider
 {
@@ -12,7 +15,16 @@ extends AbstractProvider
 
     protected $name = 'getty';
 
-    public function fetch(Identifier $identifier)
+    /**
+     * Fetch entity by identifier through Getty Vocabulary Services
+     *
+     * Currently only implemented for fetching Place-entities by
+     * TGN-identifiers.
+     *
+     * TODO:
+     *  Fetch Person-entities by ULAN-identifiers as well
+     */
+    public function fetch(Identifier $identifier, $preferredLocale = null)
     {
         if ($identifier instanceof TgnIdentifier) {
             return $this->fetchPlaceEntity($identifier);
@@ -21,6 +33,9 @@ extends AbstractProvider
         throw new \InvalidArgumentException('Expecting a TgnIdentifier');
     }
 
+    /**
+     * Fetch Place-entity by TGN-identifier
+     */
     protected function fetchPlaceEntity(TgnIdentifier $identifier, $preferredLocale = null)
     {
         $sparql = new \EasyRdf\Sparql\Client(self::ENDPOINT);

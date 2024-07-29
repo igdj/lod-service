@@ -7,9 +7,13 @@ namespace LodService\Provider;
 use UtfNormal\Validator;
 
 /**
+ * Shared methods for all the providers
  */
 abstract class AbstractProvider implements Provider
 {
+    /**
+     * Convert a UTF-8 string to normal form C, canonical composition
+     */
     protected static function normalizeString(string $str)
     {
         return Validator::toNFC($str);
@@ -85,5 +89,4 @@ abstract class AbstractProvider implements Provider
             }
         }
     }
-
 }

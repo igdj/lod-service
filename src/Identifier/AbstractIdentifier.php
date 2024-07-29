@@ -2,18 +2,24 @@
 
 namespace LodService\Identifier;
 
-class AbstractIdentifier
+abstract class AbstractIdentifier
 implements Identifier
 {
     protected $name;
     protected $prefix = null;
     protected $value;
 
+    /**
+     * Instantiate identifier, optionally from $value
+     */
     public function __construct($value = null)
     {
         if (!is_null($value)) {
             if (method_exists($this, 'setValueFromUri')) {
                 $this->setValueFromUri($value);
+            }
+            else if (method_exists($this, 'setValueFromUrn')) {
+                $this->setValueFromUrn($value);
             }
             else {
                 $this->setValue($value);
@@ -21,6 +27,11 @@ implements Identifier
         }
     }
 
+    /**
+     * Gets name of the identifier.
+     *
+     * @return string
+     */
     public function getName()
     {
         return $this->name;
@@ -38,11 +49,13 @@ implements Identifier
         return $this->prefix;
     }
 
-    public function getValue()
-    {
-        return $this->value;
-    }
-
+    /**
+     * Sets value.
+     *
+     * @param string $value
+     *
+     * @return $this
+     */
     public function setValue($value)
     {
         $this->value = $value;
@@ -50,6 +63,21 @@ implements Identifier
         return $this;
     }
 
+    /**
+     * Gets value.
+     *
+     * @return string
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    /**
+     * Prepend name to indicate concrete identifier.
+     *
+     * @return string
+     */
     public function __toString()
     {
         return join(':', [ $this->name, $this->value ]);
