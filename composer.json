@@ -17,6 +17,6 @@
 
         "league/iso3166": "^3.0",
 
-        "wikimedia/utfnormal": "^3.0"
+        "wikimedia/utfnormal": "^3.0|^4.0"
     }
 }
