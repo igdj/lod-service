@@ -4,7 +4,6 @@ namespace LodService\Model;
 
 use LodService\Identifier\Identifier;
 
-
 /**
  * Common Base class
  *
@@ -31,7 +30,7 @@ abstract class Resource
     /**
      * Gets identifier.
      *
-     * @return string|null
+     * @return Identifier|null
      */
     public function getIdentifier($name)
     {

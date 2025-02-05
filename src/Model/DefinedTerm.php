@@ -21,37 +21,48 @@ extends SchemaOrg
      * A broader term, see
      * https://www.w3.org/2009/08/skos-reference/skos.html#broader
      *
-     * @var DefinedTerm
+     * @var DefinedTerm|null The broader term.
      */
     protected $broader = null;
 
     /**
-     * @var string The start date and time of the item.
+     * @var string|null The start date and time of the item.
      */
     protected $startDate;
 
     /**
-     * @var string The end date and time of the item.
+     * @var string|null The end date and time of the item.
      */
     protected $endDate;
 
-    public function setBroader(DefinedTerm $broader)
+    /**
+     * Sets broader DefinedTerm.
+     *
+     * @param DefinedTerm|null $broader
+     *
+     * @return $this
+     */
+    public function setBroader(?DefinedTerm $broader = null)
     {
         $this->broader = $broader;
 
         return $this;
     }
 
+    /**
+     * Gets broader DefinedTerm.
+     *
+     * @return DefinedTerm|null
+     */
     public function getBroader()
     {
         return $this->broader;
     }
 
-
     /**
      * Sets startDate.
      *
-     * @param string $startDate
+     * @param string|null $startDate
      *
      * @return $this
      */
@@ -65,7 +76,7 @@ extends SchemaOrg
     /**
      * Gets startDate.
      *
-     * @return string
+     * @return string|null
      */
     public function getStartDate()
     {
@@ -75,7 +86,7 @@ extends SchemaOrg
     /**
      * Sets endDate.
      *
-     * @param string $endDate
+     * @param string|null $endDate
      *
      * @return $this
      */
@@ -89,7 +100,7 @@ extends SchemaOrg
     /**
      * Gets endDate.
      *
-     * @return string
+     * @return string|null
      */
     public function getEndDate()
     {

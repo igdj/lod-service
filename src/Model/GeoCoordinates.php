@@ -13,17 +13,17 @@ class GeoCoordinates
 extends SchemaOrg
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $latitude;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $longitude;
 
     /**
-     * @var string The country. For example, USA. You can also provide the two-letter ISO 3166-1 alpha-2 country code
+     * @var string|null The country. For example, USA. You can also provide the two-letter ISO 3166-1 alpha-2 country code
      *
      * As per Schema.org, this is part of GeoCoordinates, not directly of place
      */
@@ -32,7 +32,7 @@ extends SchemaOrg
     /**
      * Sets latitude.
      *
-     * @param string $latitude
+     * @param string|null $latitude
      *
      * @return $this
      */
@@ -46,7 +46,7 @@ extends SchemaOrg
     /**
      * Gets latitude.
      *
-     * @return string
+     * @return string|null
      */
     public function getLatitude()
     {
@@ -56,7 +56,7 @@ extends SchemaOrg
     /**
      * Sets longitude.
      *
-     * @param string $longitude
+     * @param string|null $longitude
      *
      * @return $this
      */
@@ -70,7 +70,7 @@ extends SchemaOrg
     /**
      * Gets longitude.
      *
-     * @return string
+     * @return string|null
      */
     public function getLongitude()
     {
@@ -80,7 +80,7 @@ extends SchemaOrg
     /**
      * Sets addressCountry.
      *
-     * @param string $addressCountry
+     * @param string|null $addressCountry
      *
      * @return $this
      */
@@ -94,13 +94,18 @@ extends SchemaOrg
     /**
      * Gets addressCountry.
      *
-     * @return string
+     * @return string|null
      */
     public function getAddressCountry()
     {
         return $this->addressCountry;
     }
 
+    /**
+     * Gets latitude,longitude.
+     *
+     * @return string|null
+     */
     public function getLatLong()
     {
         if (is_null($this->latitude) || is_null($this->longitude)) {

@@ -14,44 +14,44 @@ class Organization
 extends SchemaOrg
 {
     /**
-     * @var string The date that this organization was dissolved.
+     * @var string|null The date that this organization was dissolved.
      */
     protected $dissolutionDate;
 
     /**
-     * @var string The date that this organization was founded.
+     * @var string|null The date that this organization was founded.
      */
     protected $foundingDate;
 
     /**
-     * @var Place The place where the organization was founded.
+     * @var Place|null The place where the organization was founded.
      */
     protected $foundingLocation;
 
     /**
-     * @var Place The location where the organization is located.
+     * @var Place|null The location where the organization is located.
      */
     protected $location;
 
     /**
-     * @var Organization The larger organization that this organization is a subOrganization of.
+     * @var Organization|null The larger organization that this organization is a subOrganization of.
      */
     protected $parentOrganization;
 
     /**
-     * @var Organization The organization that preceded this on.
+     * @var Organization|null The organization that preceded this on.
      */
     protected $precedingOrganization;
 
     /**
-     * @var Organization The organization that suceeded this on.
+     * @var Organization|null The organization that suceeded this on.
      */
     protected $succeedingOrganization;
 
     /**
      * Sets dissolutionDate.
      *
-     * @param string $dissolutionDate
+     * @param string|null $dissolutionDate
      *
      * @return $this
      */
@@ -65,7 +65,7 @@ extends SchemaOrg
     /**
      * Gets dissolutionDate.
      *
-     * @return string
+     * @return string|null
      */
     public function getDissolutionDate()
     {
@@ -75,7 +75,7 @@ extends SchemaOrg
     /**
      * Sets foundingDate.
      *
-     * @param string $foundingDate
+     * @param string|null $foundingDate
      *
      * @return $this
      */
@@ -89,7 +89,7 @@ extends SchemaOrg
     /**
      * Gets foundingDate.
      *
-     * @return string
+     * @return string|null
      */
     public function getFoundingDate()
     {
@@ -99,11 +99,11 @@ extends SchemaOrg
     /**
      * Sets foundingLocation.
      *
-     * @param Place $foundingLocation
+     * @param Place|null $foundingLocation
      *
      * @return $this
      */
-    public function setFoundingLocation(Place $foundingLocation = null)
+    public function setFoundingLocation(?Place $foundingLocation = null)
     {
         $this->foundingLocation = $foundingLocation;
 
@@ -113,7 +113,7 @@ extends SchemaOrg
     /**
      * Gets foundingLocation.
      *
-     * @return Place
+     * @return Place|null
      */
     public function getFoundingLocation()
     {
@@ -123,11 +123,11 @@ extends SchemaOrg
     /**
      * Sets location.
      *
-     * @param Place $location
+     * @param Place|null $location
      *
      * @return $this
      */
-    public function setLocation(Place $location = null)
+    public function setLocation(?Place $location = null)
     {
         $this->location = $location;
 
@@ -137,7 +137,7 @@ extends SchemaOrg
     /**
      * Gets location.
      *
-     * @return Place
+     * @return Place|null
      */
     public function getLocation()
     {
@@ -147,11 +147,11 @@ extends SchemaOrg
     /**
      * Sets parentOrganization.
      *
-     * @param Organization $parentOrganization
+     * @param Organization|null $parentOrganization
      *
      * @return $this
      */
-    public function setParentOrganization(Organization $parentOrganization = null)
+    public function setParentOrganization(?Organization $parentOrganization = null)
     {
         $this->parentOrganizationn = $parentOrganization;
 
@@ -161,7 +161,7 @@ extends SchemaOrg
     /**
      * Gets parentOrganization.
      *
-     * @return Organization
+     * @return Organization|null
      */
     public function getParentOrganization()
     {
@@ -171,11 +171,11 @@ extends SchemaOrg
     /**
      * Sets precedingOrganization.
      *
-     * @param Organization $precedingOrganization
+     * @param Organization|null $precedingOrganization
      *
      * @return $this
      */
-    public function setPrecedingOrganization(Organization $precedingOrganization = null)
+    public function setPrecedingOrganization(?Organization $precedingOrganization = null)
     {
         $this->precedingOrganization = $precedingOrganization;
 
@@ -185,7 +185,7 @@ extends SchemaOrg
     /**
      * Gets precedingOrganization.
      *
-     * @return Organization
+     * @return Organization|null
      */
     public function getPrecedingOrganization()
     {
@@ -195,11 +195,11 @@ extends SchemaOrg
     /**
      * Sets succeedingOrganization.
      *
-     * @param Organization $succeedingOrganization
+     * @param Organization|null $succeedingOrganization
      *
      * @return $this
      */
-    public function setSucceedingOrganization(Organization $succeedingOrganization = null)
+    public function setSucceedingOrganization(?Organization $succeedingOrganization = null)
     {
         $this->succeedingOrganization = $succeedingOrganization;
 
@@ -209,7 +209,7 @@ extends SchemaOrg
     /**
      * Gets succeedingOrganization.
      *
-     * @return Organization
+     * @return Organization|null
      */
     public function getSucceedingOrganization()
     {

@@ -12,24 +12,24 @@ class Place
 extends SchemaOrg
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $additionalType;
 
     /**
-     * @var GeoCoordinates The geo coordinates of the place.
+     * @var GeoCoordinates|null The geo coordinates of the place.
      */
     protected $geo;
 
     /**
-     * @var Place
+     * @var Place|null
      */
     private $containedInPlace;
 
     /**
      * Sets additionalType.
      *
-     * @param string $additionalType
+     * @param string|null $additionalType
      *
      * @return $this
      */
@@ -43,7 +43,7 @@ extends SchemaOrg
     /**
      * Gets additionalType.
      *
-     * @return string
+     * @return string|null
      */
     public function getAdditionalType()
     {
@@ -53,7 +53,7 @@ extends SchemaOrg
     /**
      * Sets geo.
      *
-     * @param GeoCoordinates $geo
+     * @param GeoCoordinates|null $geo
      *
      * @return $this
      */
@@ -67,23 +67,40 @@ extends SchemaOrg
     /**
      * Gets geo.
      *
-     * @return GeoCoordinates
+     * @return GeoCoordinates|null
      */
     public function getGeo()
     {
         return $this->geo;
     }
 
-    public function setContainedInPlace(Place $parent = null)
+    /**
+     * Sets containedInPlace.
+     *
+     * @param Place|null $parent
+     *
+     * @return $this
+     */
+    public function setContainedInPlace(?Place $parent = null)
     {
         $this->containedInPlace = $parent;
     }
 
+    /**
+     * Gets containedInPlace.
+     *
+     * @return Place|null
+     */
     public function getContainedInPlace()
     {
         return $this->containedInPlace;
     }
 
+    /**
+     * Gets all parent Place.
+     *
+     * @return array
+     */
     public function getPath()
     {
         $path = [];
