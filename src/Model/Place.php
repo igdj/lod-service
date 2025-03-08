@@ -8,8 +8,7 @@ namespace LodService\Model;
  * @see http://schema.org/Place Documentation on Schema.org
  *
  */
-class Place
-extends SchemaOrg
+class Place extends SchemaOrg
 {
     /**
      * @var string|null

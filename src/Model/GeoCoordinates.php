@@ -2,15 +2,13 @@
 
 namespace LodService\Model;
 
-
 /**
  * The geographic coordinates of a place or event.
  *
  * @see http://schema.org/GeoCoordinates Documentation on Schema.org
  *
  */
-class GeoCoordinates
-extends SchemaOrg
+class GeoCoordinates extends SchemaOrg
 {
     /**
      * @var string|null

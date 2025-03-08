@@ -2,11 +2,11 @@
 
 namespace LodService\Provider;
 
-use \LodService\Identifier\Identifier;
+use LodService\Identifier\Identifier;
 
 interface Provider
 {
-   public function fetch(Identifier $identifier);
+    public function fetch(Identifier $identifier);
 
-   public function getName();
+    public function getName();
 }

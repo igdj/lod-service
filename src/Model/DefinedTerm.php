@@ -8,8 +8,7 @@ namespace LodService\Model;
  * @see https://schema.org/DefinedCode Documentation on Schema.org
  *
  */
-class DefinedTerm
-extends SchemaOrg
+class DefinedTerm extends SchemaOrg
 {
     /**
      * A DefinedTermSet that contains this term.

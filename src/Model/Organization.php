@@ -10,8 +10,7 @@ namespace LodService\Model;
  * TODO: There may be multiple precedingOrganization / succeedingOrganization
  *
  */
-class Organization
-extends SchemaOrg
+class Organization extends SchemaOrg
 {
     /**
      * @var string|null The date that this organization was dissolved.

@@ -8,10 +8,14 @@ use LodService\Identifier\TgnIdentifier;
 /**
  * Provider for Getty Vocabulary Services
  */
-class GettyVocabulariesProvider
-extends AbstractProvider
+class GettyVocabulariesProvider extends AbstractProvider
 {
     const ENDPOINT = 'http://vocab.getty.edu/sparql.json';
+
+    protected static function getSparqlClient()
+    {
+        return new \EasyRdf\Sparql\Client(self::ENDPOINT);
+    }
 
     protected $name = 'getty';
 
@@ -38,7 +42,7 @@ extends AbstractProvider
      */
     protected function fetchPlaceEntity(TgnIdentifier $identifier, $preferredLocale = null)
     {
-        $sparql = new \EasyRdf\Sparql\Client(self::ENDPOINT);
+        $sparql = self::getSparqlClient();
 
         $uri = sprintf('tgn:%d', $tgn = $identifier->getValue());
 
@@ -47,64 +51,64 @@ extends AbstractProvider
         // TODO: don't hardwire alternate locales en / de
 
         $query = <<<EOT
-SELECT ?Subject ?name ?name_en ?name_de ?type ?isoalpha3 ?parent ?parentString ?ancestor ?ancestorIsoalpha3 ?latitude ?longitude
-{
-    BIND({$uri} as ?Subject)
+            SELECT ?Subject ?name ?name_en ?name_de ?type ?isoalpha3 ?parent ?parentString ?ancestor ?ancestorIsoalpha3 ?latitude ?longitude
+            {
+                BIND({$uri} as ?Subject)
 
-    ?Subject a gvp:Subject;
+                ?Subject a gvp:Subject;
 
-    gvp:prefLabelGVP/xl:literalForm ?name;
+                gvp:prefLabelGVP/xl:literalForm ?name;
 
-    gvp:placeTypePreferred/gvp:prefLabelGVP/xl:literalForm ?type;
+                gvp:placeTypePreferred/gvp:prefLabelGVP/xl:literalForm ?type;
 
-    gvp:parentString ?parentString.
+                gvp:parentString ?parentString.
 
-    OPTIONAL {
-        ?Subject
-            xl:prefLabel [
-                xl:literalForm ?name_en;
-                dct:language gvp_lang:en
-            ]
-    }
+                OPTIONAL {
+                    ?Subject
+                        xl:prefLabel [
+                            xl:literalForm ?name_en;
+                            dct:language gvp_lang:en
+                        ]
+                }
 
-    OPTIONAL {
-        ?Subject
-            xl:prefLabel [
-                xl:literalForm ?name_de;
-                dct:language gvp_lang:de
-            ]
-    }
+                OPTIONAL {
+                    ?Subject
+                        xl:prefLabel [
+                            xl:literalForm ?name_de;
+                            dct:language gvp_lang:de
+                        ]
+                }
 
-    OPTIONAL {
-        ?Subject
-            foaf:focus [
-                wgs:lat ?latitude;
-                wgs:long ?longitude
-            ]
-    }.
+                OPTIONAL {
+                    ?Subject
+                        foaf:focus [
+                            wgs:lat ?latitude;
+                            wgs:long ?longitude
+                        ]
+                }.
 
-    OPTIONAL {
-        ?Subject xl:altLabel ?altLabel.
-        ?altLabel gvp:termKind <http://vocab.getty.edu/term/kind/ISOalpha3>;
-            gvp:term ?isoalpha3.
-    }.
+                OPTIONAL {
+                    ?Subject xl:altLabel ?altLabel.
+                    ?altLabel gvp:termKind <http://vocab.getty.edu/term/kind/ISOalpha3>;
+                        gvp:term ?isoalpha3.
+                }.
 
-    OPTIONAL {
-        ?Subject
-            gvp:broaderPreferred ?parent.
-    }.
+                OPTIONAL {
+                    ?Subject
+                        gvp:broaderPreferred ?parent.
+                }.
 
-    OPTIONAL {
-        ?Subject gvp:broaderPreferred+ ?ancestor.
+                OPTIONAL {
+                    ?Subject gvp:broaderPreferred+ ?ancestor.
 
-        ?ancestor xl:altLabel ?altLabel.
+                    ?ancestor xl:altLabel ?altLabel.
 
-        ?altLabel gvp:termKind <http://vocab.getty.edu/term/kind/ISOalpha3>;
-            gvp:term ?ancestorIsoalpha3.
-    }
-}
+                    ?altLabel gvp:termKind <http://vocab.getty.edu/term/kind/ISOalpha3>;
+                        gvp:term ?ancestorIsoalpha3.
+                }
+            }
 
-EOT;
+            EOT;
 
         $entity = null;
 
@@ -124,8 +128,7 @@ EOT;
                     'type' => 'additionalType',
                     'latitude' => 'latitude',
                     'longitude' => 'longitude',
-                ] as $src => $target)
-                {
+                ] as $src => $target) {
                     if (property_exists($row, $src)) {
                         $property = $row->$src;
                         $method = 'set' . ucfirst($target);
@@ -133,23 +136,23 @@ EOT;
                         switch ($target) {
                             case 'longitude':
                             case 'latitude':
-                                $geoCoordinates->$method((string)$property);
+                                $geoCoordinates->$method((string) $property);
                                 $geoCoordinatesSet = true;
                                 break;
 
                             default:
                                 if (preg_match('/^name_([a-z]+)$/', $src, $matches)) {
-                                    $entity->$target((string)$property, $matches[1]);
+                                    $entity->$target((string) $property, $matches[1]);
                                 }
                                 else {
-                                    $entity->$method((string)$property);
+                                    $entity->$method((string) $property);
                                 }
                         }
                     }
                 }
 
                 if (property_exists($row, 'parent')) {
-                    $parentIdentifier = new TgnIdentifier((string)($row->parent));
+                    $parentIdentifier = new TgnIdentifier((string) ($row->parent));
 
                     $parent = new \LodService\Model\Place();
                     $parent->setIdentifier($parentIdentifier);
@@ -160,11 +163,11 @@ EOT;
                 $code = null;
                 $isoAlpha2 = null;
                 if (property_exists($row, 'isoalpha3')) {
-                    $code = (string)($row->isoalpha3);
+                    $code = (string) ($row->isoalpha3);
                 }
 
                 if (empty($code) && property_exists($row, 'ancestorIsoalpha3')) {
-                    $code = (string)($row->ancestorIsoalpha3);
+                    $code = (string) ($row->ancestorIsoalpha3);
                 }
 
                 if (!empty($code)) {

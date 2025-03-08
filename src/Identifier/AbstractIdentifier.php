@@ -2,8 +2,7 @@
 
 namespace LodService\Identifier;
 
-abstract class AbstractIdentifier
-implements Identifier
+abstract class AbstractIdentifier implements Identifier
 {
     protected $name;
     protected $prefix = null;

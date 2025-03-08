@@ -8,8 +8,7 @@ namespace LodService\Model;
  * TODO: add alternateName
  *
  */
-abstract class SchemaOrg
-extends Resource
+abstract class SchemaOrg extends Resource
 {
     static function formatDateIncomplete($dateStr)
     {

@@ -8,8 +8,7 @@ namespace LodService\Model;
  * @see http://schema.org/Person Documentation on Schema.org
  *
  */
-class Person
-extends SchemaOrg
+class Person extends SchemaOrg
 {
     /**
      * @var string|null Family name. In the U.S., the last name of an Person. This can be used along with givenName instead of the name property.

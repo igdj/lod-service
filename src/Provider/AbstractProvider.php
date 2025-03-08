@@ -34,7 +34,7 @@ abstract class AbstractProvider implements Provider
         $resources = $resource->all($property);
         if (!is_null($resources)) {
             foreach ($resources as $resource) {
-                $identifier = \LodService\Identifier\Factory::fromUri((string)$resource);
+                $identifier = \LodService\Identifier\Factory::fromUri((string) $resource);
 
                 if (!is_null($identifier)) {
                     $entity->setIdentifier($identifier);
@@ -66,7 +66,7 @@ abstract class AbstractProvider implements Provider
                 $method = 'set' . ucfirst($property);
 
                 if (method_exists($entity, $method)) {
-                    $entity->$method(self::normalizeString((string)$value));
+                    $entity->$method(self::normalizeString((string) $value));
                 }
             }
         }

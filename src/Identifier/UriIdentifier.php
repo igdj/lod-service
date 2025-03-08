@@ -2,8 +2,7 @@
 
 namespace LodService\Identifier;
 
-class UriIdentifier
-extends AbstractIdentifier
+class UriIdentifier extends AbstractIdentifier
 {
     protected $baseUri = null;
     protected $baseUriVariants = []; // GNDs come both with http and https

@@ -2,8 +2,7 @@
 
 namespace LodService\Identifier;
 
-class LocLdsNamesIdentifier
-extends UriIdentifier
+class LocLdsNamesIdentifier extends UriIdentifier
 {
     protected $name = 'lcnaf';
     protected $prefix = 'lcauth';

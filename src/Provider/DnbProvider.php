@@ -8,11 +8,9 @@ use LodService\Identifier\GndIdentifier;
 use LodService\Identifier\LocLdsAgentsIdentifier;
 use LodService\Identifier\ViafIdentifier;
 use LodService\Identifier\WikidataIdentifier;
-
 use EasyRdf\Resource as EasyRdfResource;
 
-class DnbProvider
-extends AbstractProvider
+class DnbProvider extends AbstractProvider
 {
     protected $name = 'dnb';
 
@@ -78,7 +76,7 @@ extends AbstractProvider
 
             case 'https://d-nb.info/standards/elementset/gnd#SubjectHeading':
             case 'https://d-nb.info/standards/elementset/gnd#SubjectHeadingSensoStricto':
-            case 'https://d-nb.info/standards/elementset/gnd#HistoricSingleEventOrEra';
+            case 'https://d-nb.info/standards/elementset/gnd#HistoricSingleEventOrEra':
             case 'https://d-nb.info/standards/elementset/gnd#EthnographicName':
             case 'https://d-nb.info/standards/elementset/gnd#NomenclatureInBiologyOrChemistry':
             case 'https://d-nb.info/standards/elementset/gnd#SeriesOfConferenceOrEvent':
@@ -96,8 +94,11 @@ extends AbstractProvider
                     return;
                 }
 
-                throw new \Exception(sprintf('No handler for rdf:type %s (%s)',
-                                             $type, $uri));
+                throw new \Exception(sprintf(
+                    'No handler for rdf:type %s (%s)',
+                    $type,
+                    $uri
+                ));
         }
     }
 
@@ -105,7 +106,7 @@ extends AbstractProvider
     {
         $entity = new \LodService\Model\Person();
 
-        $identifier = new GndIdentifier((string)$resource->get('gndo:gndIdentifier'));
+        $identifier = new GndIdentifier((string) $resource->get('gndo:gndIdentifier'));
         $entity->setIdentifier($identifier);
 
         $preferredName = $resource->get('gndo:preferredNameEntityForThePerson');
@@ -143,8 +144,7 @@ extends AbstractProvider
             'gndo:placeOfBirth' => 'birthPlace',
             'gndo:placeOfDeath' => 'deathPlace',
             // TODO: find a way to handle gndo:placeOfActivity
-            ] as $key => $property)
-        {
+        ] as $key => $property) {
             $subresource = $resource->get($key);
             if (!is_null($subresource)) {
                 if ($subresource instanceof \EasyRdf\Resource) {
@@ -173,7 +173,7 @@ extends AbstractProvider
     {
         $entity = new \LodService\Model\Organization();
 
-        $identifier = new GndIdentifier((string)$resource->get('gndo:gndIdentifier'));
+        $identifier = new GndIdentifier((string) $resource->get('gndo:gndIdentifier'));
         $entity->setIdentifier($identifier);
 
         $this->populateEntityFromRdfResource($entity, $resource, [
@@ -196,8 +196,7 @@ extends AbstractProvider
             ];
         }
 
-        foreach ($subresources as $key => $property)
-        {
+        foreach ($subresources as $key => $property) {
             $subresource = $resource->get($key);
             if (!is_null($subresource)) {
                 if ($subresource instanceof \EasyRdf\Resource) {
@@ -225,7 +224,7 @@ extends AbstractProvider
     {
         $entity = new \LodService\Model\Place();
 
-        $identifier = new GndIdentifier((string)$resource->get('gndo:gndIdentifier'));
+        $identifier = new GndIdentifier((string) $resource->get('gndo:gndIdentifier'));
         $entity->setIdentifier($identifier);
 
         $this->populateEntityFromRdfResource($entity, $resource, [
@@ -243,7 +242,7 @@ extends AbstractProvider
     {
         $entity = new \LodService\Model\DefinedTerm();
 
-        $identifier = new GndIdentifier((string)$resource->get('gndo:gndIdentifier'));
+        $identifier = new GndIdentifier((string) $resource->get('gndo:gndIdentifier'));
         $entity->setIdentifier($identifier);
 
         $this->populateEntityFromRdfResource($entity, $resource, [
@@ -261,8 +260,7 @@ extends AbstractProvider
             ];
         }
 
-        foreach ($subresources as $key => $property)
-        {
+        foreach ($subresources as $key => $property) {
             $subresource = $resource->get($key);
             if (!is_null($subresource)) {
                 if ($subresource instanceof \EasyRdf\Resource) {

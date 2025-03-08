@@ -1,7 +1,8 @@
 <?php
+
 namespace LodService;
 
-use \LodService\Provider\Provider;
+use LodService\Provider\Provider;
 
 class LodService
 {
