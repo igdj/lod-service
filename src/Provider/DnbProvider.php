@@ -47,6 +47,9 @@ class DnbProvider extends AbstractProvider
         catch (\EasyRdf\Http\Exception $e) {
             throw new \InvalidArgumentException($e->getMessage());
         }
+        catch (\EasyRdf\Exception $e) {
+            throw new \RuntimeException($e->getMessage());
+        }
 
         $resource = $graph->resource($uri);
 
