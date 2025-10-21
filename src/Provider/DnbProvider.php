@@ -12,6 +12,14 @@ use EasyRdf\Resource as EasyRdfResource;
 
 class DnbProvider extends AbstractProvider
 {
+    // https://wiki.dnb.de/pages/viewpage.action?pageId=449878933
+    const ENDPOINT = 'https://sparql.dnb.de/api/gnd';
+
+    protected static function getSparqlClient()
+    {
+        return new \EasyRdf\Sparql\Client(self::ENDPOINT);
+    }
+
     protected $name = 'dnb';
 
     public function __construct()
@@ -47,8 +55,19 @@ class DnbProvider extends AbstractProvider
         catch (\EasyRdf\Http\Exception $e) {
             throw new \InvalidArgumentException($e->getMessage());
         }
-        catch (\EasyRdf\Exception $e) {
-            throw new \RuntimeException($e->getMessage());
+        catch (\EasyRdf\Exception | \Exception $e) {
+            // use experimental SPARQL-endpoint as fall back
+            $sparql = self::getSparqlClient();
+            $query = sprintf('DESCRIBE <%s>', $uri);
+            try {
+                $graph = $sparql->query($query);
+            }
+            catch (\EasyRdf\Http\Exception $e) {
+                throw new \InvalidArgumentException($e->getMessage());
+            }
+            catch (\EasyRdf\Exception $e) {
+                throw new \RuntimeException($e->getMessage());
+            }
         }
 
         $resource = $graph->resource($uri);
