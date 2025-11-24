@@ -133,9 +133,16 @@ class DnbProvider extends AbstractProvider
         $identifier = new GndIdentifier((string) $resource->get('gndo:gndIdentifier'));
         $entity->setIdentifier($identifier);
 
-        $preferredName = $resource->get('gndo:preferredNameEntityForThePerson');
+        $preferredName = $resource->get('gndo:preferredNameForThePerson');
+        if (!is_null($preferredName) && $preferredName instanceof \EasyRdf\Literal) {
+            $this->setEntityValues($entity, [
+                'name' => self::normalizeString((string)$preferredName),
+            ]);
+        }
+
+        $preferredNameEntity = $resource->get('gndo:preferredNameEntityForThePerson');
         if (!is_null($preferredName)) {
-            $this->populateEntityFromRdfResource($entity, $preferredName, [
+            $this->populateEntityFromRdfResource($entity, $preferredNameEntity, [
                 'gndo:forename' => 'givenName',
                 'gndo:surname' => 'familyName',
             ]);
