@@ -24,9 +24,29 @@ class WikidataProvider extends AbstractProvider
         'P1566' => 'geonames',
     ];
 
+    static protected $sparqlEndpoint = 'https://query.wikidata.org/sparql';
+
+    /**
+     * Sets the SPARQL endpoint for the Wikidata provider.
+     *
+     * This allows you to use a different SPARQL endpoint,
+     * such as 	https://qlever.dev/api/wikidata.
+     *
+     * By default, the provider uses the official Wikidata SPARQL endpoint
+     * at https://query.wikidata.org/sparql
+     * which has some limitations, such as rate limits and timeouts.
+     *
+     *
+     * @param string $endpoint The SPARQL endpoint URL.
+     */
+    public static function setSparqlEndpoint(string $endpoint)
+    {
+        self::$sparqlEndpoint = $endpoint;
+    }
+
     private static function getSparqlClient()
     {
-        return new \EasyRdf\Sparql\Client('https://query.wikidata.org/sparql');
+        return new \EasyRdf\Sparql\Client(self::$sparqlEndpoint);
     }
 
     protected $name = 'wikidata';
@@ -46,7 +66,12 @@ class WikidataProvider extends AbstractProvider
             $sparqlClient = self::getSparqlClient();
         }
 
-        return $sparqlClient->query($query);
+        // needed for qlever, but should not cause problems for the official endpoint
+        $query = 'PREFIX wd: <http://www.wikidata.org/entity/>' . "\n"
+            . 'PREFIX wdt: <http://www.wikidata.org/prop/direct/>' . "\n"
+            . $query;
+
+       return $sparqlClient->query($query);
     }
 
     public function fetch(Identifier $identifier, $preferredLocale = null)

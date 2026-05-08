@@ -8,6 +8,8 @@ use LodService\Identifier\GndIdentifier;
 use LodService\Identifier\TgnIdentifier;
 use LodService\Identifier\WikidataIdentifier;
 
+// WikidataProvider::setSparqlEndpoint('https://qlever.dev/api/wikidata'); // for testing with qlever
+
 $lodService = new LodService(new WikidataProvider());
 
 $identifiers = [
