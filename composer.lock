@@ -4,32 +4,36 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f4e8713c5a73151e5a15cd5dc75d9952",
+    "content-hash": "ad92a196e03681991c0578afc77d443b",
     "packages": [
         {
             "name": "league/iso3166",
-            "version": "3.0.0",
+            "version": "4.4.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/thephpleague/iso3166.git",
-                "reference": "9976d382f270ad3f3df8a68719beb7a7179ffa1e"
+                "url": "https://github.com/alcohol/iso3166.git",
+                "reference": "928ac7ecc569db9123a83ef5b1c6efc279e7cb49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/iso3166/zipball/9976d382f270ad3f3df8a68719beb7a7179ffa1e",
-                "reference": "9976d382f270ad3f3df8a68719beb7a7179ffa1e",
+                "url": "https://api.github.com/repos/alcohol/iso3166/zipball/928ac7ecc569db9123a83ef5b1c6efc279e7cb49",
+                "reference": "928ac7ecc569db9123a83ef5b1c6efc279e7cb49",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3|^8.0"
+                "ext-mbstring": "*",
+                "php": "^7.4 || ^8.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^9.0"
+                "phpstan/phpstan": "^1.12.6",
+                "phpstan/phpstan-deprecation-rules": "^1.2.1",
+                "phpstan/phpstan-strict-rules": "^1.6.1",
+                "phpunit/phpunit": "^9.6.21"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.x-dev"
+                    "dev-master": "4.x-dev"
                 }
             },
             "autoload": {
@@ -48,7 +52,7 @@
                 }
             ],
             "description": "ISO 3166-1 PHP Library",
-            "homepage": "https://github.com/thephpleague/iso3166",
+            "homepage": "https://github.com/alcohol/iso3166",
             "keywords": [
                 "3166",
                 "3166-1",
@@ -58,10 +62,16 @@
                 "library"
             ],
             "support": {
-                "issues": "https://github.com/thephpleague/iso3166/issues",
-                "source": "https://github.com/thephpleague/iso3166"
+                "issues": "https://github.com/alcohol/iso3166/issues",
+                "source": "https://github.com/alcohol/iso3166"
             },
-            "time": "2020-12-05T06:50:42+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/alcohol",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-01-02T09:49:36+00:00"
         },
         {
             "name": "ml/iri",
@@ -168,17 +178,70 @@
             "time": "2022-09-29T08:45:17+00:00"
         },
         {
-            "name": "sweetrdf/easyrdf",
-            "version": "1.8.0",
+            "name": "psr/http-message",
+            "version": "2.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/sweetrdf/easyrdf.git",
-                "reference": "2c57de7380ed16f5017e95810bcd08c0dffae640"
+                "url": "https://github.com/php-fig/http-message.git",
+                "reference": "402d35bcb92c70c026d1a6a9883f06b2ead23d71"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sweetrdf/easyrdf/zipball/2c57de7380ed16f5017e95810bcd08c0dffae640",
-                "reference": "2c57de7380ed16f5017e95810bcd08c0dffae640",
+                "url": "https://api.github.com/repos/php-fig/http-message/zipball/402d35bcb92c70c026d1a6a9883f06b2ead23d71",
+                "reference": "402d35bcb92c70c026d1a6a9883f06b2ead23d71",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2 || ^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Http\\Message\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for HTTP messages",
+            "homepage": "https://github.com/php-fig/http-message",
+            "keywords": [
+                "http",
+                "http-message",
+                "psr",
+                "psr-7",
+                "request",
+                "response"
+            ],
+            "support": {
+                "source": "https://github.com/php-fig/http-message/tree/2.0"
+            },
+            "time": "2023-04-04T09:54:51+00:00"
+        },
+        {
+            "name": "sweetrdf/easyrdf",
+            "version": "1.19.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sweetrdf/easyrdf.git",
+                "reference": "e1d60a7686cff8177575218d027cc9e100fb0e4c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sweetrdf/easyrdf/zipball/e1d60a7686cff8177575218d027cc9e100fb0e4c",
+                "reference": "e1d60a7686cff8177575218d027cc9e100fb0e4c",
                 "shasum": ""
             },
             "require": {
@@ -187,20 +250,20 @@
                 "ext-pcre": "*",
                 "ext-xmlreader": "*",
                 "lib-libxml": "*",
-                "php": "^7.1|^8.0"
+                "php": "^8.0",
+                "sweetrdf/rdf-helpers": "^2.0"
             },
             "replace": {
-                "easyrdf/easyrdf": "1.0.*|1.1.*"
+                "easyrdf/easyrdf": "1.1.*"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^3.0",
                 "laminas/laminas-http": "^2",
-                "ml/json-ld": "^1.0",
                 "phpstan/phpstan": "^1.0",
                 "phpstan/phpstan-phpunit": "^1.0",
-                "phpunit/phpunit": "^7.5|^8.5|^9.5",
-                "semsol/arc2": "^2.4",
-                "zendframework/zend-http": "^2"
+                "phpunit/phpunit": "^9.5.0|^10.0.0",
+                "semsol/arc2": "^3",
+                "sweetrdf/json-ld": "^1.3"
             },
             "type": "library",
             "autoload": {
@@ -243,9 +306,104 @@
             ],
             "support": {
                 "issues": "https://github.com/sweetrdf/easyrdf/issues",
-                "source": "https://github.com/sweetrdf/easyrdf/tree/1.8.0"
+                "source": "https://github.com/sweetrdf/easyrdf/tree/1.19.0"
             },
-            "time": "2023-01-16T11:43:21+00:00"
+            "time": "2026-01-07T14:46:24+00:00"
+        },
+        {
+            "name": "sweetrdf/rdf-helpers",
+            "version": "2.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sweetrdf/rdfHelpers.git",
+                "reference": "6a1389bd8ade42f9f5a29bb74d8e0fb9a70691b1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sweetrdf/rdfHelpers/zipball/6a1389bd8ade42f9f5a29bb74d8e0fb9a70691b1",
+                "reference": "6a1389bd8ade42f9f5a29bb74d8e0fb9a70691b1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "sweetrdf/rdf-interface": "^2 | ^3",
+                "zozlak/rdf-constants": "^1.1"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^1",
+                "phpunit/phpunit": "^10"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "rdfHelpers\\": "src/rdfHelpers"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mateusz Żółtak",
+                    "email": "zozlak@zozlak.org",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Set of low level helpers for implementing rdfInterface",
+            "homepage": "https://github.com/sweetrdf/rdfHelpers",
+            "support": {
+                "issues": "https://github.com/sweetrdf/rdfHelpers/issues",
+                "source": "https://github.com/sweetrdf/rdfHelpers/tree/2.1.2"
+            },
+            "time": "2026-03-18T12:41:27+00:00"
+        },
+        {
+            "name": "sweetrdf/rdf-interface",
+            "version": "3.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sweetrdf/rdfInterface.git",
+                "reference": "82b565c724b8ce30ea918bfff2232832c66a912f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sweetrdf/rdfInterface/zipball/82b565c724b8ce30ea918bfff2232832c66a912f",
+                "reference": "82b565c724b8ce30ea918bfff2232832c66a912f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "psr/http-message": "^1.0 || ^2.0",
+                "zozlak/rdf-constants": "*"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "rdfInterface\\": "src/rdfInterface"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mateusz Żółtak",
+                    "email": "zozlak@zozlak.org",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A common RDF interface for PHP RDF libraries.",
+            "homepage": "https://github.com/sweetrdf/rdfInterface",
+            "support": {
+                "issues": "https://github.com/sweetrdf/rdfInterface/issues",
+                "source": "https://github.com/sweetrdf/rdfInterface/tree/3.2.0"
+            },
+            "time": "2025-04-28T12:22:37+00:00"
         },
         {
             "name": "wikimedia/utfnormal",
@@ -300,17 +458,55 @@
                 "source": "https://github.com/wikimedia/utfnormal/tree/4.0.0"
             },
             "time": "2023-04-17T20:37:19+00:00"
+        },
+        {
+            "name": "zozlak/rdf-constants",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zozlak/RdfConstants.git",
+                "reference": "a8de0b50d23b213a68784ec2cec22b4ad838012b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zozlak/RdfConstants/zipball/a8de0b50d23b213a68784ec2cec22b4ad838012b",
+                "reference": "a8de0b50d23b213a68784ec2cec22b4ad838012b",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "zozlak\\": "src/zozlak"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mateusz Żółtak",
+                    "email": "zozlak@zozlak.org"
+                }
+            ],
+            "description": "A set of commonly used RDF and XSD constants",
+            "homepage": "https://github.com/zozlak/RdfConstants",
+            "support": {
+                "issues": "https://github.com/zozlak/RdfConstants/issues",
+                "source": "https://github.com/zozlak/RdfConstants/tree/1.2.1"
+            },
+            "time": "2022-08-05T12:50:50+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
         "php": "^7.3|^8.1"
     },
-    "platform-dev": [],
-    "plugin-api-version": "2.6.0"
+    "platform-dev": {},
+    "plugin-api-version": "2.9.0"
 }
