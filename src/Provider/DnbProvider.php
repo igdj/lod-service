@@ -94,6 +94,7 @@ class DnbProvider extends AbstractProvider
                 // e.g. Place as placeOfBirth of http://d-nb.info/gnd/118529579
             case 'https://d-nb.info/standards/elementset/gnd#Country':
             case 'https://d-nb.info/standards/elementset/gnd#MemberState':
+            case 'https://d-nb.info/standards/elementset/gnd#AdministrativeUnit':
             case 'https://d-nb.info/standards/elementset/gnd#BuildingOrMemorial':
                 return $this->instantiatePlaceFromRdfResource($resource, $fetchRelated);
                 break;
